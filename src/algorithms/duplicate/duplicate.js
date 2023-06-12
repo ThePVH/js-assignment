@@ -4,5 +4,9 @@
  * @returns {Array} - Duplicated array.
  */
 export function duplicate(arr) {
-  throw new Error('Function "duplicate()" not implemented')
+  if (!Array.isArray(arr)) {
+    throw new Error('Function "duplicate()" not implemented')
+  }
+
+  return [...arr, ...arr]
 }

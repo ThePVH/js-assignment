@@ -4,5 +4,9 @@
  * @returns {Array} - Array of unique values.
  */
 export function unique(arr) {
-  throw new Error('Function "unique()" not implemented')
+  if (!Array.isArray(arr)) {
+    throw new Error('Function "unique()" not implemented')
+  }
+
+  return [...new Set(arr)]
 }

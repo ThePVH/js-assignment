@@ -4,8 +4,21 @@ export class Queue {
    * Inserts a new element to the queue.
    * @param element - New element.
    */
+
+  constructor() {
+    this.items = {}
+    this.firstIndex = 0
+    this.lastIndex = 0
+  }
+
   enqueue(element) {
-    throw new Error('Method "enqueue()" not implemented');
+    if (element === undefined) {
+      throw new Error('Method "enqueue()" not implemented')
+    }
+
+    this.items[this.lastIndex] = element
+    this.lastIndex++
+    return element
   }
 
   /**
@@ -14,7 +27,15 @@ export class Queue {
    * @returns - First element in the queue or undefined.
    */
   dequeue() {
-    throw new Error('Method "dequeue()" not implemented');
+    if (this.firstIndex === this.lastIndex) {
+      return undefined
+      // throw new Error('Method "dequeue()" not implemented')
+    }
+
+    const element = this.items[this.firstIndex]
+    delete this.items[this.firstIndex]
+    this.firstIndex++
+    return element
   }
 
   /**
@@ -23,6 +44,11 @@ export class Queue {
    * @returns - First element in the queue or undefined.
    */
   peek() {
-    throw new Error('Method "peek()" not implemented');
+    if (this.firstIndex === this.lastIndex) {
+      return undefined
+      // throw new Error('Method "peek()" not implemented')
+    }
+
+    return this.items[this.firstIndex]
   }
 }

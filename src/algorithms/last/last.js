@@ -4,5 +4,9 @@
  * @returns - Last element of an array or undefined.
  */
 export function last(arr) {
-  throw new Error('Function "last()" not implemented');
+  if (!Array.isArray(arr)) {
+    throw new Error('Function "last()" not implemented')
+  }
+
+  return arr[arr.length - 1]
 }

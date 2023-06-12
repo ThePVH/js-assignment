@@ -4,8 +4,20 @@ export class Stack {
    * Inserts a new element to the stack.
    * @param element - New element.
    */
+
+  constructor() {
+    this.items = {}
+    this.firstIndex = 0
+  }
+
   push(element) {
-    throw new Error('Method "push()" not implemented');
+    if (element === undefined) {
+      throw new Error('Method "push()" not implemented')
+    }
+
+    this.items[this.firstIndex] = element
+    this.firstIndex++
+    return element
   }
 
   /**
@@ -14,7 +26,15 @@ export class Stack {
    * @returns - The most recent element or undefined.
    */
   pop() {
-    throw new Error('Method "pop()" not implemented');
+    if (this.firstIndex === 0) {
+      return undefined
+      // throw new Error('Method "pop()" not implemented')
+    }
+
+    const element = this.items[this.firstIndex - 1]
+    delete this.items[this.firstIndex - 1]
+    this.firstIndex--
+    return element
   }
 
   /**
@@ -23,6 +43,11 @@ export class Stack {
    * @returns - The most recent element or undefined.
    */
   peek() {
-    throw new Error('Method "peek()" not implemented');
+    if (this.firstIndex === 0) {
+      return undefined
+      throw new Error('Method "peek()" not implemented')
+    }
+
+    return this.items[this.firstIndex - 1]
   }
 }
